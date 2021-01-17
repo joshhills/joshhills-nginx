@@ -16,5 +16,12 @@ jobs:
           
           script: |
             cd /var/nginx
+            docker-compose down
+            cd /var
+            rm -rf /var/nginx
+            mkdir /var/nginx
+            chmod 777 /var/nginx
             git clone git@github.com:joshhills/joshhills-nginx.git .
+            cd /var/nginx
+            chmod +x init-letsencrypt.sh
             # docker-compose up -d
