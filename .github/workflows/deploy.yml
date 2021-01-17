@@ -17,4 +17,4 @@ jobs:
           script: |
             cd /var/nginx
             git clone git@github.com:joshhills/joshhills-nginx.git .
-            # docker-compose up -d
+            docker-compose up -d
