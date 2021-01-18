@@ -15,10 +15,10 @@ jobs:
           username: ${{secrets.SSH_USERNAME}}
           
           script: |
-            rm -rf /var/nginx
-            mkdir /var/nginx
-            chmod 777 /var/nginx
+            sudo rm -rf /var/nginx
+            sudo mkdir /var/nginx
             git clone git@github.com:joshhills/joshhills-nginx.git /var/nginx
+            sudo chown -R robot:admins /var/nginx
             chmod +x /var/nginx/init-letsencrypt.sh
             cd /var/nginx
             # docker-compose up -d
