@@ -5,7 +5,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(joshhills.dev)
+domains=(joshhills.dev staging.joshhills.dev www.joshhills.dev)
 rsa_key_size=4096
 data_path="/etc/letsencrypt"
 email="joshuamarcushills@gmail.com" # Adding a valid address is strongly recommended
@@ -21,7 +21,7 @@ fi
 
 echo "### Creating dummy certificate for $domains ..."
 path="/etc/letsencrypt/live/$domains"
-mkdir -p "$data_path/conf/live/$domains"
+mkdir -p "$data_path/live/$domains"
 docker-compose run --rm --entrypoint "\
   openssl req -x509 -nodes -newkey rsa:$rsa_key_size -days 1\
     -keyout '$path/privkey.pem' \
