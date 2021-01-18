@@ -1,22 +1,22 @@
-version: '3'
+# version: '3'
 
-services:
-  nginx:
-    image: nginx:1.15-alpine
-    restart: unless-stopped
-    volumes:
-      - ./data/nginx:/etc/nginx/conf.d
-      - /etc/letsencrypt:/etc/letsencrypt
-      - /var/www/certbot:/var/www/certbot
-      - /var/log/nginx:/var/log/nginx
-    ports:
-      - "80:80"
-      - "443:443"
-    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
-  certbot:
-    image: certbot/certbot:v0.36.0
-    restart: unless-stopped
-    volumes:
-      - /etc/letsencrypt:/etc/letsencrypt
-      - /var/www/certbot:/var/www/certbot
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+# services:
+#   nginx:
+#     image: nginx:1.15-alpine
+#     restart: unless-stopped
+#     volumes:
+#       - ./data/nginx:/etc/nginx/conf.d
+#       - /etc/letsencrypt:/etc/letsencrypt
+#       - /var/www/certbot:/var/www/certbot
+#       - /var/log/nginx:/var/log/nginx
+#     ports:
+#       - "80:80"
+#       - "443:443"
+#     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+#   certbot:
+#     image: certbot/certbot:v0.36.0
+#     restart: unless-stopped
+#     volumes:
+#       - /etc/letsencrypt:/etc/letsencrypt
+#       - /var/www/certbot:/var/www/certbot
+#     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
