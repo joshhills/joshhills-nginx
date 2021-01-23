@@ -23,4 +23,4 @@ services:
 
 networks: 
   default: 
-      name: joshhills-dev
+      name: nginx
