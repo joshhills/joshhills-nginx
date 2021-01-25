@@ -21,6 +21,7 @@ jobs:
             chown -R root:admins /var/nginx
             chmod +x /var/nginx/init-letsencrypt.sh
             cd /var/nginx
+            docker network create nginx
             docker-compose down
             docker-compose build
             docker-compose up -d
