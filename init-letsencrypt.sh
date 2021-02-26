@@ -5,7 +5,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(joshhills.dev staging.joshhills.dev project.joshhills.dev www.joshhills.dev)
+domains=(joshhills.dev staging.joshhills.dev project.joshhills.dev www.project.joshhills.dev www.joshhills.dev)
 rsa_key_size=4096
 data_path="/etc/letsencrypt"
 email="joshuamarcushills@gmail.com" # Adding a valid address is strongly recommended
